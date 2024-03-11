@@ -7,11 +7,15 @@ function App() {
 
 	const handlesubmit = (e) => {
 		e.preventDefault();
-		setParagraph(data);
-
 		let amount = parseInt(count);
 
-		console.log(amount);
+		if (count <= 0) {
+			amount = 1;
+		}
+		if (count > 8) {
+			amount = 8;
+		}
+		setParagraph(data.slice(0, amount));
 	};
 
 	return (
@@ -31,7 +35,7 @@ function App() {
 				</button>
 			</form>{" "}
 			<article className="lorem-text">
-				{data.map((item, index) => {
+				{paragraph.map((item, index) => {
 					return <p key={index}>{item}</p>;
 				})}
 			</article>
